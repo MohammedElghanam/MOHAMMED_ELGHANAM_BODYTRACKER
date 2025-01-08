@@ -1,54 +1,46 @@
-import { Image, StyleSheet, View, Platform, TextInput, Button } from 'react-native';
-
+import { Image, StyleSheet, View, TextInput, Button, Text } from 'react-native';
 import Hello from '@/components/command/hello';
 import Cards from '@/components/command/cards';
 import useTest from '@/hooks/forms/useTest';
 
-
 export default function HomeScreen() {
+  const { test, setTest, handelSubmit } = useTest();
 
-  const { test, setTest, handelSubmit} = useTest();
-  
   return (
-    <View>
-
-
-      <Hello />
+    <View style={styles.screen}>
+      {/* Composants externes */}
+      {/* <Hello /> */}
       <Cards />
 
-      <View>
-
-        <View style={styles.container}>
-          <TextInput
-            style={styles.testInput}
-            placeholder="Tapez quelque chose"
-            value={test}  
-            onChangeText={(text) => setTest(text)} 
-          />
-          <Button title="Rechercher" onPress={handelSubmit} />
-        </View>
+      {/* Section de formulaire */}
+      <View style={styles.container}>
+        <Text style={styles.label}>Email</Text>
+        <TextInput
+          style={styles.testInput}
+          placeholder="Tapez quelque chose"
+          value={test}
+          onChangeText={(text) => setTest(text)}
+        />
+        <Button title="Rechercher" onPress={handelSubmit} />
       </View>
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  screen: {
+    flex: 1,
+    backgroundColor: '#f8f9fa', // Ajout d'une couleur de fond pour un design agréable
+  },
+  container: {
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    padding: 16, // Ajout de padding pour un meilleur espacement
   },
-  stepContainer: {
-    gap: 8,
+  label: {
+    fontSize: 18,
+    fontWeight: 'bold',
     marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
   },
   testInput: {
     backgroundColor: 'yellow',
@@ -58,10 +50,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingLeft: 10,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    borderRadius: 4,
   },
 });
