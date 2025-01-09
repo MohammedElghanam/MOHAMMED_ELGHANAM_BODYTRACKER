@@ -9,7 +9,7 @@ export default function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarStyle: styles.backGround
+        tabBarStyle: styles.tabBarStyle
       }}
     >
       <Tabs.Screen
@@ -47,14 +47,14 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabBarStyle: {
-    backgroundColor: 'blue', 
-    height: 60, 
+    borderTopWidth:1,
+    borderColor: '#727D73',
+    height:60,
   },
   backGround: {
-    borderWidth:1,
+    
     borderRadius:10,
     padding:10,
     margin: 15,
-    borderColor: '#727D73'
   }
 });
