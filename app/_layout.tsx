@@ -8,8 +8,6 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import '../global.css';
-import Hello from '@/components/command/hello';
-import Portfolio from '@/components/command/portfolio';
 
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -33,10 +31,14 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
-      <Hello /> 
+      {/* <Hello />  */}
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        {/* <Stack.Screen name="portfolio" component={Portfolio} > */}
+        <Stack.Screen name="(tabs)" options={{
+          headerShown: true,
+          headerStyle: { backgroundColor: '#6200ee' },
+          headerTintColor: 'white',
+          headerTitleStyle: { fontWeight: 'bold' },
+        }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
