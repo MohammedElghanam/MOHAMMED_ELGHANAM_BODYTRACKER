@@ -33,7 +33,7 @@ const useForm = () =>  {
       }
     };
     
-    const handleInputChange = (key, value) => {
+    const handleInputChange = (key: string, value: any) => {
       setFormData({ ...formData, [key]: value });
     };
     

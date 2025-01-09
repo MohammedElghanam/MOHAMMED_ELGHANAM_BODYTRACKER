@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { User } from '@/types/userTypes';
 
 const useList = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
   
   useEffect(() => {
     loadUsers();
