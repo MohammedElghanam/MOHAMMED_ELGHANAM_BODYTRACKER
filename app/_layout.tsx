@@ -31,7 +31,6 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
-      {/* <Hello />  */}
       <Stack>
         <Stack.Screen name="(tabs)" options={{
           headerShown: true,
