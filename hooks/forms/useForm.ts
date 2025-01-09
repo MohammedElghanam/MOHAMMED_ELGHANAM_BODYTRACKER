@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Alert } from 'react-native';
  
 
-const useForm = () =>  {
+const useForm = (loadUsers: () => void) =>  {
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -17,7 +17,14 @@ const useForm = () =>  {
     
     const saveUserData = async () => {
       try {
-        await AsyncStorage.setItem('user_data', JSON.stringify(formData));
+
+        const savedUsers = await AsyncStorage.getItem('user_data');
+        const parsedUsers = savedUsers ? JSON.parse(savedUsers) : []; 
+  
+        const updatedUsers = [...parsedUsers, formData];
+
+
+        await AsyncStorage.setItem('user_data', JSON.stringify(updatedUsers));
         setFormData({
             firstName: '',
             lastName: '',
@@ -27,7 +34,10 @@ const useForm = () =>  {
             height: '',
             address: '',
         });
-        Alert.alert('Succès', 'Les informations ont été sauvegardées avec succès !');
+        // Alert.alert('Succès', 'Les informations ont été sauvegardées avec succès !');
+
+        loadUsers();
+
       } catch (error) {
         console.error('Erreur lors de la sauvegarde des données :', error);
       }

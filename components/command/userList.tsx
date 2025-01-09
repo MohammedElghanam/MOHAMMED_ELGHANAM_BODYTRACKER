@@ -3,62 +3,62 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 const UserList = () => {
 
-  // const { users } = useList();
+  const { users } = useList();
 
-  const users = [
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: '30',
-      nationality: 'USA',
-      weight: '75',
-      height: '175',
-      address: '123 Main St',
-    },
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: '30',
-      nationality: 'USA',
-      weight: '75',
-      height: '175',
-      address: '123 Main St',
-    },
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: '30',
-      nationality: 'USA',
-      weight: '75',
-      height: '175',
-      address: '123 Main St',
-    },
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: '30',
-      nationality: 'USA',
-      weight: '75',
-      height: '175',
-      address: '123 Main St',
-    },
-    {
-      firstName: 'John',
-      lastName: 'Doe',
-      age: '30',
-      nationality: 'USA',
-      weight: '75',
-      height: '175',
-      address: '123 Main St',
-    },
-  ];
+  // const users = [
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     age: '30',
+  //     nationality: 'USA',
+  //     weight: '75',
+  //     height: '175',
+  //     address: '123 Main St',
+  //   },
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     age: '30',
+  //     nationality: 'USA',
+  //     weight: '75',
+  //     height: '175',
+  //     address: '123 Main St',
+  //   },
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     age: '30',
+  //     nationality: 'USA',
+  //     weight: '75',
+  //     height: '175',
+  //     address: '123 Main St',
+  //   },
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     age: '30',
+  //     nationality: 'USA',
+  //     weight: '75',
+  //     height: '175',
+  //     address: '123 Main St',
+  //   },
+  //   {
+  //     firstName: 'John',
+  //     lastName: 'Doe',
+  //     age: '30',
+  //     nationality: 'USA',
+  //     weight: '75',
+  //     height: '175',
+  //     address: '123 Main St',
+  //   },
+  // ];
 
   console.log(users);
   console.log(Array.isArray(users));
   
 
   return (
-    <View style={styles.container}>
+    <View >
       <Text style={styles.title}>Liste des utilisateurs</Text>
       {users.length === 0 ? (
         <Text>Aucun utilisateur enregistré.</Text>
@@ -88,11 +88,6 @@ const UserList = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 16,
-    backgroundColor: '#f7f7f7',
-  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',

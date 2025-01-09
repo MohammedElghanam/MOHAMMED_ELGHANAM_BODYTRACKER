@@ -1,4 +1,5 @@
 import useForm from '@/hooks/forms/useForm';
+import useList from '@/hooks/forms/useList';
 import {
   Text,
   TextInput,
@@ -7,9 +8,10 @@ import {
   ScrollView,
 } from 'react-native'
 
-const UserForm = () => {
+const UserForm = ({ navigation }: any) => {
 
-  const { formData, handleInputChange, saveUserData } = useForm();
+  const { users, loadUsers } = useList();
+  const { formData, handleInputChange, saveUserData } = useForm(loadUsers);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -61,7 +63,10 @@ const UserForm = () => {
         onChangeText={(text) => handleInputChange('address', text)}
       />
 
-      <Button title="Sauvegarder" onPress={saveUserData} />
+      <Button title="Sauvegarder" onPress={async () => {
+          await saveUserData();  
+          navigation.goBack(); 
+        }} />
     </ScrollView>
   );
 };

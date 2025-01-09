@@ -14,22 +14,18 @@ const useList = () => {
     try {
       const savedUsers = await AsyncStorage.getItem('user_data');
       if (savedUsers) {
-        const savedUsers = await AsyncStorage.getItem('user_data');
-        console.log('Raw data from AsyncStorage:', savedUsers); // Logs the raw string
-        if (savedUsers) {
-          const parsedUsers = JSON.parse(savedUsers);
-          console.log('Parsed data:', parsedUsers); // Logs the parsed object
-          setUsers(Array.isArray(parsedUsers) ? parsedUsers : []);
-      }}
-
-      
+        Alert.alert('kayna data');
+        const parsedUsers = JSON.parse(savedUsers);
+        setUsers(parsedUsers);
+      }
     } catch (error) {
       console.error('Erreur lors du chargement des utilisateurs :', error);
     }
   };
 
   return {
-    users
+    users,
+    loadUsers
   }
 }
 
