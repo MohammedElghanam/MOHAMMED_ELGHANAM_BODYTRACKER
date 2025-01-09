@@ -33,7 +33,7 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{
-          headerShown: true,
+          headerShown: false,
           headerStyle: { backgroundColor: '#6200ee' },
           headerTintColor: 'white',
           headerTitleStyle: { fontWeight: 'bold' },
