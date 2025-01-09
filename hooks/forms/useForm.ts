@@ -18,6 +18,15 @@ const useForm = () =>  {
     const saveUserData = async () => {
       try {
         await AsyncStorage.setItem('user_data', JSON.stringify(formData));
+        setFormData({
+            firstName: '',
+            lastName: '',
+            age: '',
+            nationality: '',
+            weight: '',
+            height: '',
+            address: '',
+        });
         Alert.alert('Succès', 'Les informations ont été sauvegardées avec succès !');
       } catch (error) {
         console.error('Erreur lors de la sauvegarde des données :', error);

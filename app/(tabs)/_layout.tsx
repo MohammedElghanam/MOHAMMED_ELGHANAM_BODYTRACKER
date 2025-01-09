@@ -27,16 +27,16 @@ export default function TabLayout() {
       />
 
       <Tabs.Screen
-        name="portfolio"
+        name="test"
         options={{
-          title: 'portfolio'
+          title: 'Camera'
         }}
       />
 
       <Tabs.Screen
         name="saveUser"
         options={{
-          title: 'saveUser'
+          title: 'Users'
         }}
       />
       

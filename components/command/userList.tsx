@@ -16,13 +16,13 @@ const UserList = () => {
           keyExtractor={(item, index) => index.toString()}
           renderItem={({ item }) => (
             <View style={styles.userCard}>
-              <Text>Nom : {item.lastName}</Text>
-              <Text>Prénom : {item.firstName}</Text>
-              <Text>Âge : {item.age}</Text>
-              <Text>Nationalité : {item.nationality}</Text>
-              <Text>Poids : {item.weight} kg</Text>
-              <Text>Taille : {item.height} cm</Text>
-              <Text>Adresse : {item.address}</Text>
+              <Text>Nom : {item.lastName || 'Non spécifié'}</Text>
+              <Text>Prénom : {item.firstName || 'Non spécifié'}</Text>
+              <Text>Âge : {item.age || 'Non spécifié'}</Text>
+              <Text>Nationalité : {item.nationality || 'Non spécifié'}</Text>
+              <Text>Poids : {item.weight ? `${item.weight} kg` : 'Non spécifié'}</Text>
+              <Text>Taille : {item.height ? `${item.height} cm` : 'Non spécifié'}</Text>
+              <Text>Adresse : {item.address || 'Non spécifié'}</Text>
             </View>
           )}
         />
