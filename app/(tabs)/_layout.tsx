@@ -51,11 +51,10 @@ const styles = StyleSheet.create({
     height: 60, 
   },
   backGround: {
-    backgroundColor: 'yellow',
-    borderWidth:3,
+    borderWidth:1,
     borderRadius:10,
     padding:10,
     margin: 15,
-    borderColor: 'red'
+    borderColor: '#727D73'
   }
 });
