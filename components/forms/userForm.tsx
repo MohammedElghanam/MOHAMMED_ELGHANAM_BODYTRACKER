@@ -1,3 +1,4 @@
+import useForm from '@/hooks/forms/useForm';
 import {
   Text,
   TextInput,
@@ -7,6 +8,8 @@ import {
 } from 'react-native'
 
 const UserForm = () => {
+
+  const { formData, handleInputChange, saveUserData } = useForm();
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

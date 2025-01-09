@@ -32,6 +32,13 @@ export default function TabLayout() {
           title: 'portfolio'
         }}
       />
+
+      <Tabs.Screen
+        name="saveUser"
+        options={{
+          title: 'saveUser'
+        }}
+      />
       
     </Tabs>
   );
