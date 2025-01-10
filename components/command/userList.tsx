@@ -65,9 +65,7 @@ const UserList = () => {
       ) : (
         <FlatList
           data={users}
-          renderItem={({ item, index }) => {
-            console.log(item.firstName);
-            
+          renderItem={({ item, index }) => {            
             return(
               <View style={styles.userCard} key={index}>
                 <Text>Nom : {item.lastName}</Text>

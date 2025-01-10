@@ -22,7 +22,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explore'
+          title: 'graisse corporelle'
         }}
       />
 
@@ -37,6 +37,20 @@ export default function TabLayout() {
         name="saveUser"
         options={{
           title: 'Users'
+        }}
+      />
+
+      <Tabs.Screen
+        name="cameraPage"
+        options={{
+          title: 'cameraPage'
+        }}
+      />
+
+      <Tabs.Screen
+        name="galleryPage"
+        options={{
+          title: 'gallery'
         }}
       />
       

@@ -14,7 +14,6 @@ const useList = () => {
     try {
       const savedUsers = await AsyncStorage.getItem('user_data');
       if (savedUsers) {
-        Alert.alert('kayna data');
         const parsedUsers = JSON.parse(savedUsers);
         setUsers(parsedUsers);
       }
