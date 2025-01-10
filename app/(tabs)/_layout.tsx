@@ -53,6 +53,13 @@ export default function TabLayout() {
           title: 'gallery'
         }}
       />
+
+      <Tabs.Screen
+        name="ImageFilterScreen"
+        options={{
+          title: 'ImageFilterScreen'
+        }}
+      />
       
     </Tabs>
   );
