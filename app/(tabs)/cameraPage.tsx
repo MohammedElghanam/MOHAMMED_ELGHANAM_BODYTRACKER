@@ -1,41 +1,31 @@
-import { CameraView, CameraType, useCameraPermissions } from 'expo-camera';
-import { useState } from 'react';
+import { CameraView } from 'expo-camera';
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import useTakePicture from '@/hooks/forms/useTakePicture';
 
-export default function App() {
+export default function cameraPage() {
 
     let cameraRef: any;
 
-    const [facing, setFacing] = useState<CameraType>('back');
-    const [permission, requestPermission] = useCameraPermissions();
-    const [photo, setImage] = useState<string | null>(null);
+    const { 
+        facing,
+        permission,
+        requestPermission,
+        takePicture,
+        toggleCameraFacing,
+    } = useTakePicture();
+
 
   if (!permission) {
-    // Camera permissions are still loading.
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet.
     return (
       <View style={styles.container}>
         <Text style={styles.message}>We need your permission to show the camera</Text>
         <Button onPress={requestPermission} title="grant permission" />
       </View>
     );
-  }
-
-  const takePicture = async () => {
-    if (cameraRef) {
-      const imageData = await cameraRef.takePictureAsync();
-      console.log(imageData);
-      
-      setImage(imageData.uri);
-    }
-  };
-
-  function toggleCameraFacing() {
-    setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
 
   return (
@@ -45,7 +35,7 @@ export default function App() {
           <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={takePicture}>
+          <TouchableOpacity style={styles.button} onPress={ () => takePicture(cameraRef) }>
             <Text style={styles.text}>Capture</Text>
           </TouchableOpacity>
         </View>
