@@ -1,32 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, Image, StyleSheet } from 'react-native';
-import * as MediaLibrary from 'expo-media-library';
+import React from 'react';
+import { View, Image, StyleSheet, ScrollView, Text } from 'react-native';
+import useListPicture from '@/hooks/forms/useListPicture';
 
 const GalleryScreen = () => {
-  const [photos, setPhotos] = useState([]);
-
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      const { assets } = await MediaLibrary.getAssetsAsync({
-        mediaType: MediaLibrary.MediaType.photo,
-      });
-      setPhotos(assets);
-    };
-    fetchPhotos();
-  }, []);
+  const { imageUris } = useListPicture();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Gallery</Text>
-      <FlatList
-        data={photos}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.photoContainer}>
-            <Image source={{ uri: item.uri }} style={styles.photo} />
-          </View>
+      <ScrollView contentContainerStyle={styles.galleryContainer}>
+        {imageUris.length > 0 ? (
+          imageUris.map((uri, index) => (
+            <View key={index} style={styles.imageWrapper}>
+              <Image source={{ uri }} style={styles.image} />
+            </View>
+          ))
+        ) : (
+          <Text style={styles.emptyText}>No images found</Text>
         )}
-      />
+      </ScrollView>
     </View>
   );
 };
@@ -42,16 +34,31 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
     textAlign: 'center',
+    color: '#333',
   },
-  photoContainer: {
+  galleryContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
+  imageWrapper: {
     marginBottom: 16,
+    marginHorizontal: '1%',
+    width: '48%',
+    aspectRatio: 1,
     borderRadius: 8,
     overflow: 'hidden',
+    backgroundColor: '#ccc',
   },
-  photo: {
-    width: 100,
-    height: 100,
-    borderRadius: 8,
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+  emptyText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#666',
+    marginTop: 32,
   },
 });
 
