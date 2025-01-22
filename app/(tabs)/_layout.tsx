@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { Tabs } from 'expo-router';
 
+import { IconSymbol } from '@/components/ui/IconSymbol';
+
 export default function TabLayout() {
   return (
     <Tabs
@@ -12,10 +14,12 @@ export default function TabLayout() {
         tabBarStyle: styles.tabBarStyle
       }}
     >
+      
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home'
+          title: 'Home',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
         }}
       />
 
@@ -29,7 +33,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="test"
         options={{
-          title: 'Camera'
+          title: 'Camera',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
 
@@ -39,14 +44,7 @@ export default function TabLayout() {
           title: 'Users'
         }}
       />
-
-      <Tabs.Screen
-        name="cameraPage"
-        options={{
-          title: 'cameraPage'
-        }}
-      />
-
+      
       <Tabs.Screen
         name="galleryPage"
         options={{
@@ -58,6 +56,13 @@ export default function TabLayout() {
         name="ImageFilterScreen"
         options={{
           title: 'ImageFilterScreen'
+        }}
+      />
+
+      <Tabs.Screen
+        name="SuiviGraphique"
+        options={{
+          title: 'SuiviGraphique'
         }}
       />
       
